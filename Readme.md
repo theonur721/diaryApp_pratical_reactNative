@@ -27,7 +27,7 @@ Diary, kullanıcıların günlük olarak ruh halini ve hislerini kaydedebileceğ
 
 ## Ekran Görüntüsü
 
-![](./assets/ekran.gif)
+![](./assets/screen.gif)
 
 ---
 # diaryApp_pratical_reactNative
