@@ -27,4 +27,4 @@ Diary, kullanıcıların günlük olarak ruh halini ve hislerini kaydedebileceğ
 
 ## Ekran Görüntüsü
 
-![](./assets/ekran.gif)
+![](src/assets/ekran.gif)
