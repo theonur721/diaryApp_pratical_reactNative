@@ -10,6 +10,7 @@ Diary, kullanıcıların günlük olarak ruh halini ve hislerini kaydedebileceğ
 - 📝 Günlük not yazma
 - 💾 Kayıtları kalıcı olarak saklama
 - 📆 Geçmiş kayıtları listeleme
+- 🗑️ Kayıt silme (eklendi)
 - ✅ TypeScript ile güvenli veri yapıları
 - 🚀 Expo ile hızlı geliştirme ortamı
 

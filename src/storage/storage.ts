@@ -45,4 +45,12 @@ export const Storage = {
       console.error("Veriler silinirken hata:", e);
     }
   },
+
+  async saveEntries(entries: DiaryEntry[]): Promise<void> {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    } catch (e) {
+      console.error("Veriler kaydedilirken hata:", e);
+    }
+  },
 };

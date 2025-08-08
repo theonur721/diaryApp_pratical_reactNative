@@ -5,6 +5,7 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
+  TouchableOpacity,
 } from "react-native";
 import { DiaryEntry } from "../types";
 import { Storage } from "../storage/storage";
@@ -26,6 +27,13 @@ export default function HistoryScreen() {
   useEffect(() => {
     loadEntries();
   }, []);
+
+  const handleDelete = async (index: number) => {
+    const newEntries = [...entries];
+    newEntries.splice(index, 1);
+    setEntries(newEntries);
+    await Storage.saveEntries(newEntries);
+  };
 
   const formatDate = (iso: string) => {
     const date = new Date(iso);
@@ -58,11 +66,18 @@ export default function HistoryScreen() {
       <FlatList
         data={entries}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.entry}>
             <Text style={styles.date}>{formatDate(item.date)}</Text>
             <Text style={styles.mood}>Ruh Hali: {item.mood}</Text>
             {item.note ? <Text style={styles.note}>{item.note}</Text> : null}
+
+            <TouchableOpacity
+              onPress={() => handleDelete(index)}
+              style={styles.deleteButton}
+            >
+              <Text style={styles.deleteText}>Sil</Text>
+            </TouchableOpacity>
           </View>
         )}
       />
@@ -81,6 +96,17 @@ const styles = StyleSheet.create({
   date: { fontWeight: "bold", marginBottom: 4 },
   mood: { fontSize: 18, marginBottom: 4 },
   note: { fontSize: 16, color: "#555" },
+  deleteButton: {
+    marginTop: 8,
+    backgroundColor: "#ff4d4d",
+    padding: 8,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  deleteText: {
+    color: "white",
+    fontWeight: "bold",
+  },
   emptyText: { fontSize: 18, color: "#999" },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
